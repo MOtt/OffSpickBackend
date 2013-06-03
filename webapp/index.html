@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="apple-touch-icon" href="images/firefighter.png"/>
+
+<title>OffSpick - Übersicht</title>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<link rel="stylesheet" href="css/jquerymobile120.css" />
+<script src="js/jquery183.js" charset="utf-8"></script>
+<script src="js/app.js" charset="utf-8"></script>
+<script src="js/jquerymobile120.js" charset="utf-8"></script>
+</head>
+<body>
+
+<div data-role="page" id="offSpickListPage" data-add-back-btn="true" data-back-btn-text="Home">
+  <div data-role="header">
+    <h1>OffSpick</h1>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview" id="offSpickList">
+    </ul>
+  </div>
+</div>
+
+<div data-role="page" id="loginForm" data-rel="dialog" data-add-back-btn="false">
+  <div data-role="header">
+    <h1>Login</h1>
+  </div>
+  <div data-role="content">
+    <div data-role="fieldcontain">
+      <label for="user">Benutzer:</label>
+      <input type="text" name="user" id="user" value=""/>
+    </div>
+    <div data-role="fieldcontain">
+      <label for="pw">Passwort:</label>
+      <input type="password" name="pw" id="pw" value=""/>
+    </div>
+    <button id="loginBtn">Speichern</button>
+  </div>
+</div>
+</body>
+</html>
