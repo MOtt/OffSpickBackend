@@ -32,6 +32,33 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	
-	public $components = array('DebugKit.Toolbar');
+
+	public $components = array(
+    'Auth' => array(
+        'loginAction' => array(
+            'controller'    => 'users',
+            'action'        => 'login'
+        ),
+        'authError' => 'Sie haben keinen Zugriff auf diese Seite',
+        'authenticate' => array(
+            'Form' => array(
+                'fields' => array('username' => 'username'),
+                'scope' => array('admin_user' => '1')
+            ),
+			
+        ),
+		'loginRedirect' => array('controller' => 'dashboards', 'action' => 'index'),
+'logoutRedirect' => array('controller' => 'dashboards', 'action' => 'display', 'home')
+    ),
+    'Session',
+	'DebugKit.Toolbar'
+);
+
+
+    public function beforeFilter() {
+        $this->Auth->allow('all');
+    }
+    
 }
+
+

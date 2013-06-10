@@ -95,7 +95,7 @@
  *
  * And uncomment the App.baseUrl below. But keep in mind
  * that plugin assets such as images, CSS and Javascript files
- * will not work without url rewriting!
+ * will not work without URL rewriting!
  * To work around this issue you should either symlink or copy
  * the plugin assets into you app's webroot directory. This is
  * recommended even when you are using mod_rewrite. Handling static
@@ -121,7 +121,7 @@
  *	`manager_index()` and `/manager/controller/index`
  *
  */
-	//Configure::write('Routing.prefixes', array('admin'));
+Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.
@@ -193,13 +193,11 @@
 
 /**
  * A random string used in security hashing methods.
- */
-	Configure::write('Security.salt', 'ölkse9OASWSAQWködfk3we41324lsdf');
+ */	Configure::write('Security.salt', '3b233f92b4187dd05b3ed033bb04dcf223113d9e');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
- */
-	Configure::write('Security.cipherSeed', '86355123555568465132156');
+ */	Configure::write('Security.cipherSeed', '623431366531383535623366393834');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -321,7 +319,7 @@ if (Configure::read('debug') > 0) {
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
-$prefix = 'myapp_';
+$prefix = 'app_';
 
 /**
  * Configure the cache used for general framework caching. Path information,
