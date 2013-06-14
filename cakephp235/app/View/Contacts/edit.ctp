@@ -9,6 +9,8 @@
 		echo $this->Form->input('Sort');
 		echo $this->Form->input('ValidFrom');
 		echo $this->Form->input('ValidTo');
+		echo $this->Form->input('ContactNumber_id');
+		echo $this->Form->input('CategoryContact_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

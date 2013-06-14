@@ -15,6 +15,13 @@ class ContactNumber extends AppModel {
 	public $useTable = 'contact_number';
 
 /**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id';
+
+/**
  * Validation rules
  *
  * @var array
@@ -89,6 +96,24 @@ class ContactNumber extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
+ * hasOne associations
+ *
+ * @var array
+ */
+	public $hasOne = array(
+		'Contact' => array(
+			'className' => 'CategoryContact',
+			'foreignKey' => 'id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+
+
+
+/**
  * belongsTo associations
  *
  * @var array
@@ -96,7 +121,7 @@ class ContactNumber extends AppModel {
 	public $belongsTo = array(
 		'Contact' => array(
 			'className' => 'Contact',
-			'foreignKey' => 'contact_id',
+			'foreignKey' => 'id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

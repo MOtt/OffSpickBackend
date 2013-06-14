@@ -28,14 +28,3 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Contact Number'), array('action' => 'edit', $contactNumber['ContactNumber']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Contact Number'), array('action' => 'delete', $contactNumber['ContactNumber']['id']), null, __('Are you sure you want to delete # %s?', $contactNumber['ContactNumber']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Contact Numbers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Contact Number'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Contacts'), array('controller' => 'contacts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Contact'), array('controller' => 'contacts', 'action' => 'add')); ?> </li>
-	</ul>
-</div>

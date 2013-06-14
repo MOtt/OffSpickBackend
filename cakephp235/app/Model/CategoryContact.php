@@ -9,6 +9,13 @@ App::uses('AppModel', 'Model');
 class CategoryContact extends AppModel {
 
 /**
+ * Use table
+ *
+ * @var mixed False or table name
+ */
+	public $useTable = 'category_contact';
+
+/**
  * Display field
  *
  * @var string
@@ -67,19 +74,33 @@ class CategoryContact extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Contact' => array(
-			'className' => 'Contact',
+		'Category' => array(
+			'className' => 'Category',
 			'foreignKey' => 'contact_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'category_id',
+		)
+	);
+	
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Contact' => array(
+			'className' => 'Contact',
+			'foreignKey' => 'id',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 }

@@ -47,6 +47,8 @@ class ContactsController extends AppController {
 				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
 			}
 		}
+		$categoryContacts = $this->Contact->CategoryContact->find('list');
+		$this->set(compact('categoryContacts'));
 	}
 
 /**
@@ -71,6 +73,8 @@ class ContactsController extends AppController {
 			$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
 			$this->request->data = $this->Contact->find('first', $options);
 		}
+		$categoryContacts = $this->Contact->CategoryContact->find('list');
+		$this->set(compact('categoryContacts'));
 	}
 
 /**

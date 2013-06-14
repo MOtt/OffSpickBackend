@@ -13,7 +13,7 @@
 	<tr>
 		<td><?php echo h($contactNumber['ContactNumber']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($contactNumber['Contact']['id'], array('controller' => 'contacts', 'action' => 'view', $contactNumber['Contact']['id'])); ?>
+			<?php echo $this->Html->link($contactNumber['Contact']['Name'], array('controller' => 'contacts', 'action' => 'view', $contactNumber['Contact']['id'])); ?>
 		</td>
 		<td><?php echo h($contactNumber['ContactNumber']['Phone']); ?>&nbsp;</td>
 		<td><?php echo h($contactNumber['ContactNumber']['ValidFrom']); ?>&nbsp;</td>
@@ -39,12 +39,4 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Contact Number'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Contacts'), array('controller' => 'contacts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Contact'), array('controller' => 'contacts', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

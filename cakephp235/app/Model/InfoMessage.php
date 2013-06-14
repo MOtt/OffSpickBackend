@@ -1,26 +1,25 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Category Model
+ * InfoMessage Model
  *
- * @property Category hasOne CategoryContact $Category hasOne CategoryContact
- * @property CategoryContact $CategoryContact
+ * @property InfoCategory $InfoCategory
  */
-class Category extends AppModel {
+class InfoMessage extends AppModel {
 
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-	public $useTable = 'category';
+	public $useTable = 'info_message';
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'message';
 
 /**
  * Validation rules
@@ -28,7 +27,7 @@ class Category extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'Text' => array(
+		'message' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -38,25 +37,7 @@ class Category extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'Sort' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'ValidFrom' => array(
+		'valid_from' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
@@ -74,7 +55,7 @@ class Category extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'ValidTo' => array(
+		'valid_to' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
@@ -83,16 +64,6 @@ class Category extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'category_contact_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -107,14 +78,14 @@ class Category extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasOne associations
+ * belongsTo associations
  *
  * @var array
  */
-	public $hasOne = array(
-		'CategoryContact' => array(
-			'className' => 'CategoryContact',
-			'foreignKey' => 'id',
+	public $belongsTo = array(
+		'InfoCategory' => array(
+			'className' => 'InfoCategory',
+			'foreignKey' => 'info_category_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

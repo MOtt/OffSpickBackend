@@ -8,13 +8,6 @@ App::uses('AppController', 'Controller');
 class ContactNumbersController extends AppController {
 
 /**
- * Helpers
- *
- * @var array
- */
-	public $helpers = array('Text');
-
-/**
  * index method
  *
  * @return void

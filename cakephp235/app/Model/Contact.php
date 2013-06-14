@@ -8,6 +8,20 @@ App::uses('AppModel', 'Model');
 class Contact extends AppModel {
 
 /**
+ * Use table
+ *
+ * @var mixed False or table name
+ */
+	public $useTable = 'contact';
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id';
+	
+/**
  * Validation rules
  *
  * @var array
@@ -81,24 +95,27 @@ class Contact extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
+
+	
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
-	public $hasMany = array(
-		'ContactNumber' => array(
-			'className' => 'ContactNumber',
-			'foreignKey' => 'contact_id',
-			'dependent' => false,
+	public $belongsTo = array(
+		'CategoryContact' => array(
+			'className' => 'CategoryContact',
+			'foreignKey' => 'categorycontact_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'order' => ''
+		),
+				'ContactNumber' => array(
+			'className' => 'ContactNumber',
+			'foreignKey' => 'contactnumber_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 

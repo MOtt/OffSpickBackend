@@ -10,11 +10,9 @@
 	<?php foreach ($categoryContacts as $categoryContact): ?>
 	<tr>
 		<td><?php echo h($categoryContact['CategoryContact']['id']); ?>&nbsp;</td>
+		<td><?php echo h($categoryContact['CategoryContact']['contact_id']); ?>&nbsp;</td>        		
 		<td>
-			<?php echo $this->Html->link($categoryContact['Contact']['id'], array('controller' => 'contacts', 'action' => 'view', $categoryContact['Contact']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($categoryContact['Category']['id'], array('controller' => 'categories', 'action' => 'view', $categoryContact['Category']['id'])); ?>
+			<?php echo $this->Html->link($categoryContact['Category']['Text'], array('controller' => 'categories', 'action' => 'view', $categoryContact['Category']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $categoryContact['CategoryContact']['id'])); ?>
@@ -37,14 +35,4 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Category Contact'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Contacts'), array('controller' => 'contacts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Contact'), array('controller' => 'contacts', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

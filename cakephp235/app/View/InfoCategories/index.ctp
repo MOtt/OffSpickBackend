@@ -1,14 +1,14 @@
 <div class="infoCategories index">
-	<h2><?php echo __('Info Categories'); ?></h2>
+	<h2><?php echo __('Info Kategorien'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('valid_from'); ?></th>
-			<th><?php echo $this->Paginator->sort('valid_to'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nr'); ?></th>
+			<th><?php echo $this->Paginator->sort('Kategorie'); ?></th>
+			<th><?php echo $this->Paginator->sort('Gültig von'); ?></th>
+			<th><?php echo $this->Paginator->sort('Gültig bis'); ?></th>
+			<th><?php echo $this->Paginator->sort('Erstellt'); ?></th>
+			<th><?php echo $this->Paginator->sort('Geändert'); ?></th>
+			<th class="actions"><?php echo __(' '); ?></th>
 	</tr>
 	<?php foreach ($infoCategories as $infoCategory): ?>
 	<tr>
@@ -29,14 +29,14 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	'format' => __('Seite {:page} von {:pages}, {:current} Datensätze von {:count} , Anzeige von {:start} bis {:end}')
 	));
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev('< ' . __('vorherige'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('nächste') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>

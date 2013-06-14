@@ -31,5 +31,10 @@
 			<?php echo h($category['Category']['ValidTo']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Category Contact Id'); ?></dt>
+		<dd>
+			<?php echo h($category['Category']['category_contact_id']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>

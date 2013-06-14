@@ -3,21 +3,27 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-            <th><?php echo $this->Paginator->sort('Name'); ?></th>
+			<th><?php echo $this->Paginator->sort('Name'); ?></th>
 			<th><?php echo $this->Paginator->sort('Description'); ?></th>
 			<th><?php echo $this->Paginator->sort('Sort'); ?></th>
 			<th><?php echo $this->Paginator->sort('ValidFrom'); ?></th>
 			<th><?php echo $this->Paginator->sort('ValidTo'); ?></th>
+			<th><?php echo $this->Paginator->sort('ContactNumber_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('CategoryContact_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($contacts as $contact): ?>
 	<tr>
 		<td><?php echo h($contact['Contact']['id']); ?>&nbsp;</td>
-        <td><?php echo h($contact['Contact']['Name']); ?>&nbsp;</td>
+		<td><?php echo h($contact['Contact']['Name']); ?>&nbsp;</td>
 		<td><?php echo h($contact['Contact']['Description']); ?>&nbsp;</td>
 		<td><?php echo h($contact['Contact']['Sort']); ?>&nbsp;</td>
 		<td><?php echo h($contact['Contact']['ValidFrom']); ?>&nbsp;</td>
 		<td><?php echo h($contact['Contact']['ValidTo']); ?>&nbsp;</td>
+		<td><?php echo h($contact['Contact']['ContactNumber_id']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($contact['CategoryContact']['id'], array('controller' => 'category_contacts', 'action' => 'view', $contact['CategoryContact']['id'])); ?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $contact['Contact']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $contact['Contact']['id'])); ?>

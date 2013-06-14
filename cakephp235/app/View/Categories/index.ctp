@@ -8,6 +8,7 @@
 			<th><?php echo $this->Paginator->sort('Sort'); ?></th>
 			<th><?php echo $this->Paginator->sort('ValidFrom'); ?></th>
 			<th><?php echo $this->Paginator->sort('ValidTo'); ?></th>
+			<th><?php echo $this->Paginator->sort('category_contact_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($categories as $category): ?>
@@ -18,6 +19,7 @@
 		<td><?php echo h($category['Category']['Sort']); ?>&nbsp;</td>
 		<td><?php echo h($category['Category']['ValidFrom']); ?>&nbsp;</td>
 		<td><?php echo h($category['Category']['ValidTo']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['category_contact_id']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $category['Category']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['id'])); ?>
