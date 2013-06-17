@@ -1,26 +1,25 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * CategoryContact Model
+ * NewsCategory Model
  *
- * @property Contact $Contact
- * @property Category $Category
+ * @property NewsMessage $NewsMessage
  */
-class CategoryContact extends AppModel {
+class NewsCategory extends AppModel {
 
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-	public $useTable = 'category_contact';
+	public $useTable = 'news_category';
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'name';
 
 /**
  * Validation rules
@@ -28,9 +27,19 @@ class CategoryContact extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'contact_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'valid_from' => array(
+			'datetime' => array(
+				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -46,9 +55,9 @@ class CategoryContact extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'category_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'valid_to' => array(
+			'datetime' => array(
+				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -69,24 +78,24 @@ class CategoryContact extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * belongsTo associations
+ * hasMany associations
  *
  * @var array
  */
-	public $belongsTo = array(
-		'Contact' => array(
-			'className' => 'Contact',
-			'foreignKey' => 'contact_id',
+	public $hasMany = array(
+		'NewsMessage' => array(
+			'className' => 'NewsMessage',
+			'foreignKey' => 'news_category_id',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
-		),
-		'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'category_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
+
 }

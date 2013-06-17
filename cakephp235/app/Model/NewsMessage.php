@@ -1,26 +1,25 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * CategoryContact Model
+ * NewsMessage Model
  *
- * @property Contact $Contact
- * @property Category $Category
+ * @property NewsCategory $NewsCategory
  */
-class CategoryContact extends AppModel {
+class NewsMessage extends AppModel {
 
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-	public $useTable = 'category_contact';
+	public $useTable = 'news_message';
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'message';
 
 /**
  * Validation rules
@@ -28,9 +27,19 @@ class CategoryContact extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'contact_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'message' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'valid_from' => array(
+			'datetime' => array(
+				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -46,9 +55,9 @@ class CategoryContact extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'category_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'valid_to' => array(
+			'datetime' => array(
+				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -74,16 +83,9 @@ class CategoryContact extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Contact' => array(
-			'className' => 'Contact',
-			'foreignKey' => 'contact_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'category_id',
+		'NewsCategory' => array(
+			'className' => 'NewsCategory',
+			'foreignKey' => 'news_category_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

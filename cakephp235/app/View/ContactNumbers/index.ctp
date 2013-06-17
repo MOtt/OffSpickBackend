@@ -1,23 +1,27 @@
 <div class="contactNumbers index">
-	<h2><?php echo __('Contact Numbers'); ?></h2>
+	<h2><?php echo __('Kontakt-Nummern'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('contact_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('Phone'); ?></th>
-			<th><?php echo $this->Paginator->sort('ValidFrom'); ?></th>
-			<th><?php echo $this->Paginator->sort('ValidTo'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nr'); ?></th>
+			<th><?php echo $this->Paginator->sort('Telefonnummer'); ?></th>
+			<th><?php echo $this->Paginator->sort('Gültig von'); ?></th>
+			<th><?php echo $this->Paginator->sort('Gültig bis'); ?></th>
+			<th><?php echo $this->Paginator->sort('Erstellt'); ?></th>
+			<th><?php echo $this->Paginator->sort('Geändert'); ?></th>
+			<th><?php echo $this->Paginator->sort('Kontakt'); ?></th>
+			<th class="actions"><?php echo __(' '); ?></th>
 	</tr>
 	<?php foreach ($contactNumbers as $contactNumber): ?>
 	<tr>
-		<td><?php echo h($contactNumber['ContactNumber']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($contactNumber['Contact']['Name'], array('controller' => 'contacts', 'action' => 'view', $contactNumber['Contact']['id'])); ?>
+			<?php echo $this->Html->link($contactNumber['Contact']['name'], array('controller' => 'contacts', 'action' => 'view', $contactNumber['Contact']['id'])); ?>
 		</td>
-		<td><?php echo h($contactNumber['ContactNumber']['Phone']); ?>&nbsp;</td>
-		<td><?php echo h($contactNumber['ContactNumber']['ValidFrom']); ?>&nbsp;</td>
-		<td><?php echo h($contactNumber['ContactNumber']['ValidTo']); ?>&nbsp;</td>
+		<td><?php echo h($contactNumber['ContactNumber']['phone']); ?>&nbsp;</td>
+		<td><?php echo h($contactNumber['ContactNumber']['valid_from']); ?>&nbsp;</td>
+		<td><?php echo h($contactNumber['ContactNumber']['valid_to']); ?>&nbsp;</td>
+		<td><?php echo h($contactNumber['ContactNumber']['created']); ?>&nbsp;</td>
+		<td><?php echo h($contactNumber['ContactNumber']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($contactNumber['ContactNumber']['contact_id']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $contactNumber['ContactNumber']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $contactNumber['ContactNumber']['id'])); ?>
@@ -29,14 +33,14 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	'format' => __('Seite {:page} von {:pages}, {:current} Datensätze von {:count} , Anzeige von {:start} bis {:end}')
 	));
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev('< ' . __('vorherige'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('nächste') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>

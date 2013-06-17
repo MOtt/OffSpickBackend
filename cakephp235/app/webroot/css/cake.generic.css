@@ -384,6 +384,7 @@ form .error-message {
 	margin: 0;
 	padding-left: 4px;
 	padding-right: 0;
+	
 }
 form .error,
 form .error-message {
@@ -394,6 +395,7 @@ form .error-message {
 	-o-box-shadow: none;
 	box-shadow: none;
 	text-shadow: none;
+
 }
 
 /** Notices and Errors **/
@@ -557,8 +559,14 @@ input[type=submit]:active,
 
 /** Related **/
 .related {
-	clear: both;
-	display: block;
+		float:right;
+	width:76%;
+	border-left:1px solid #666;
+	padding:10px 2%;
+	
+	
+	/*clear: both;
+	display: block;*/
 }
 
 /** Debugging **/

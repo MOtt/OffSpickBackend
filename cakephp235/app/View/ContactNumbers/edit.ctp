@@ -1,14 +1,14 @@
 <div class="contactNumbers form">
 <?php echo $this->Form->create('ContactNumber'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Contact Number'); ?></legend>
+		<legend><?php echo __('Kontakt-Nummer bearbeiten'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('phone');
+		echo $this->Form->input('valid_from');
+		echo $this->Form->input('valid_to');
 		echo $this->Form->input('contact_id');
-		echo $this->Form->input('Phone');
-		echo $this->Form->input('ValidFrom');
-		echo $this->Form->input('ValidTo');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Speichern')); ?>
 </div>

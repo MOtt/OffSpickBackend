@@ -1,29 +1,31 @@
 <div class="categories index">
-	<h2><?php echo __('Categories'); ?></h2>
+	<h2><?php echo __('Kategorien'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('Text'); ?></th>
-			<th><?php echo $this->Paginator->sort('Description'); ?></th>
-			<th><?php echo $this->Paginator->sort('Sort'); ?></th>
-			<th><?php echo $this->Paginator->sort('ValidFrom'); ?></th>
-			<th><?php echo $this->Paginator->sort('ValidTo'); ?></th>
-			<th><?php echo $this->Paginator->sort('category_contact_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nr'); ?></th>
+			<th><?php echo $this->Paginator->sort('Name'); ?></th>
+			<th><?php echo $this->Paginator->sort('Beschreibung'); ?></th>
+			<th><?php echo $this->Paginator->sort('Sortierung'); ?></th>
+			<th><?php echo $this->Paginator->sort('Gültig von'); ?></th>
+			<th><?php echo $this->Paginator->sort('Gültig bis'); ?></th>
+			<th><?php echo $this->Paginator->sort('Erstellt'); ?></th>
+			<th><?php echo $this->Paginator->sort('Geändert'); ?></th>
+			<th class="actions"><?php echo __(' '); ?></th>
 	</tr>
 	<?php foreach ($categories as $category): ?>
 	<tr>
 		<td><?php echo h($category['Category']['id']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['Text']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['Description']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['Sort']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['ValidFrom']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['ValidTo']); ?>&nbsp;</td>
-		<td><?php echo h($category['Category']['category_contact_id']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['name']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['description']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['sort']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['valid_from']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['valid_to']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['created']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['modified']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $category['Category']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['id']), null, __('Are you sure you want to delete # %s?', $category['Category']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['id']), null, __('Möchten Sie die Kategorie <%s> wirklich löschen?', $category['Category']['name'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -31,14 +33,14 @@
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	'format' => __('Seite {:page} von {:pages}, {:current} Datensätze von {:count} , Anzeige von {:start} bis {:end}')
 	));
 	?>	</p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->prev('< ' . __('vorherige'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__('nächste') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>

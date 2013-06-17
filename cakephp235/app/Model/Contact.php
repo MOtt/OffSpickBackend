@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Contact Model
  *
- * @property ContactNumber $ContactNumber
+ * @property Contact hasMany Category $Contact hasMany Category
  */
 class Contact extends AppModel {
 
@@ -19,15 +19,15 @@ class Contact extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id';
-	
+	public $displayField = 'name';
+
 /**
  * Validation rules
  *
  * @var array
  */
 	public $validate = array(
-		'Name' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -37,7 +37,7 @@ class Contact extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'Sort' => array(
+		'sort' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -55,7 +55,7 @@ class Contact extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'ValidFrom' => array(
+		'valid_from' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
@@ -73,7 +73,7 @@ class Contact extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'ValidTo' => array(
+		'valid_to' => array(
 			'datetime' => array(
 				'rule' => array('datetime'),
 				//'message' => 'Your custom message here',
@@ -95,27 +95,48 @@ class Contact extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-
-	
 /**
- * belongsTo associations
+ * hasAndBelongsToMany associations
  *
  * @var array
  */
-	public $belongsTo = array(
-		'CategoryContact' => array(
-			'className' => 'CategoryContact',
-			'foreignKey' => 'categorycontact_id',
+	public $hasAndBelongsToMany = array(
+		'Category' => array(
+			'className' => 'Category',
+			'joinTable' => 'category_contact',
+			'foreignKey' => 'contact_id',
+			'associationForeignKey' => 'category_id',
+			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
-		),
-				'ContactNumber' => array(
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);
+
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'ContactNumber' => array(
 			'className' => 'ContactNumber',
-			'foreignKey' => 'contactnumber_id',
+			'foreignKey' => 'contact_id',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 

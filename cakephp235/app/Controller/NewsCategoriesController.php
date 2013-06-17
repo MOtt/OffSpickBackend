@@ -1,11 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Categories Controller
+ * NewsCategories Controller
  *
- * @property Category $Category
+ * @property NewsCategory $NewsCategory
  */
-class CategoriesController extends AppController {
+class NewsCategoriesController extends AppController {
 
 /**
  * index method
@@ -13,8 +13,8 @@ class CategoriesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Category->recursive = 0;
-		$this->set('categories', $this->paginate());
+		$this->NewsCategory->recursive = 0;
+		$this->set('newsCategories', $this->paginate());
 	}
 
 /**
@@ -25,11 +25,11 @@ class CategoriesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->Category->exists($id)) {
+		if (!$this->NewsCategory->exists($id)) {
 			throw new NotFoundException(__('Ungültige Kategorie'));
 		}
-		$options = array('conditions' => array('Category.' . $this->Category->primaryKey => $id));
-		$this->set('category', $this->Category->find('first', $options));
+		$options = array('conditions' => array('NewsCategory.' . $this->NewsCategory->primaryKey => $id));
+		$this->set('newsCategory', $this->NewsCategory->find('first', $options));
 	}
 
 /**
@@ -39,16 +39,14 @@ class CategoriesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->Category->create();
-			if ($this->Category->save($this->request->data)) {
+			$this->NewsCategory->create();
+			if ($this->NewsCategory->save($this->request->data)) {
 				$this->Session->setFlash(__('Die Kategorie wurde gespeichert'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('Die Kategorie konnte nicht gespeichert werden. Bitte nochmals speichern.'));
+				$this->Session->setFlash(__('Die Kategorie konnte nicht gespeichert werden. Bitte nochmals probieren.'));
 			}
 		}
-		$contacts = $this->Category->Contact->find('list');
-		$this->set(compact('contacts'));
 	}
 
 /**
@@ -59,22 +57,20 @@ class CategoriesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Category->exists($id)) {
+		if (!$this->NewsCategory->exists($id)) {
 			throw new NotFoundException(__('Ungültige Kategorie'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Category->save($this->request->data)) {
+			if ($this->NewsCategory->save($this->request->data)) {
 				$this->Session->setFlash(__('Die Kategorie wurde gespeichert'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('Die Kategorie konnte nicht gespeichert werden. Bitte nochmals speichern.'));
+				$this->Session->setFlash(__('Die Kategorie konnte nicht gespeichert werden. Bitte nochmals probieren.'));
 			}
 		} else {
-			$options = array('conditions' => array('Category.' . $this->Category->primaryKey => $id));
-			$this->request->data = $this->Category->find('first', $options);
+			$options = array('conditions' => array('NewsCategory.' . $this->NewsCategory->primaryKey => $id));
+			$this->request->data = $this->NewsCategory->find('first', $options);
 		}
-		$contacts = $this->Category->Contact->find('list');
-		$this->set(compact('contacts'));
 	}
 
 /**
@@ -85,13 +81,13 @@ class CategoriesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Category->id = $id;
-		if (!$this->Category->exists()) {
+		$this->NewsCategory->id = $id;
+		if (!$this->NewsCategory->exists()) {
 			throw new NotFoundException(__('Ungültige Kategorie'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Category->delete()) {
-			$this->Session->setFlash(__('Kategorie wurde gelöscht'));
+		if ($this->NewsCategory->delete()) {
+			$this->Session->setFlash(__('Kategorie gelöscht'));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->Session->setFlash(__('Kategorie wurde nicht gelöscht'));
