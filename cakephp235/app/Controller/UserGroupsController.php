@@ -28,7 +28,7 @@ class UserGroupsController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->UserGroup->exists($id)) {
-			throw new NotFoundException(__('Invalid user group'));
+			throw new NotFoundException(__('Ungültige Benutzergruppe'));
 		}
 		$options = array('conditions' => array('UserGroup.' . $this->UserGroup->primaryKey => $id));
 		$this->set('userGroup', $this->UserGroup->find('first', $options));
@@ -43,10 +43,10 @@ class UserGroupsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->UserGroup->create();
 			if ($this->UserGroup->save($this->request->data)) {
-				$this->Session->setFlash(__('The user group has been saved'));
+				$this->Session->setFlash(__('Benutzergruppe wurde gespeichert'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user group could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Benutzergruppe wurde gespeichert. Bitte nochmals probieren.'));
 			}
 		}
 	}
@@ -60,14 +60,14 @@ class UserGroupsController extends AppController {
  */
 	public function edit($id = null) {
 		if (!$this->UserGroup->exists($id)) {
-			throw new NotFoundException(__('Invalid user group'));
+			throw new NotFoundException(__('Ungültige Benutzergruppe'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->UserGroup->save($this->request->data)) {
-				$this->Session->setFlash(__('The user group has been saved'));
+				$this->Session->setFlash(__('Benutzergruppe wurde gespeichert'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user group could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Benutzergruppe wurde gespeichert. Bitte nochmals probieren.'));
 			}
 		} else {
 			$options = array('conditions' => array('UserGroup.' . $this->UserGroup->primaryKey => $id));
@@ -85,14 +85,14 @@ class UserGroupsController extends AppController {
 	public function delete($id = null) {
 		$this->UserGroup->id = $id;
 		if (!$this->UserGroup->exists()) {
-			throw new NotFoundException(__('Invalid user group'));
+			throw new NotFoundException(__('Ungültige Benutzergruppe'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->UserGroup->delete()) {
-			$this->Session->setFlash(__('User group deleted'));
+			$this->Session->setFlash(__('Benutzergruppe wurde gelöscht'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('User group was not deleted'));
+		$this->Session->setFlash(__('Benutzergruppe wurde nicht gelöscht'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

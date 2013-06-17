@@ -68,7 +68,7 @@ public function logout() {
 				$this->Session->setFlash(__('Benutzer wurde gespeichert'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('Benutzer konnte nicht gespeichert werden. Bitte nochmals versuchen'));
+				$this->Session->setFlash(__('Benutzer wurde nicht gespeichert. Bitte nochmals versuchen'));
 			}
 		}
 		$userGroups = $this->User->UserGroup->find('list');
@@ -84,14 +84,14 @@ public function logout() {
  */
 	public function edit($id = null) {
 		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Ungültiger Benutzer'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash(__('Benutzer wurde gespeichert'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Benutzer wurde nicht gespeichert. Bitte nochmals versuchen'));
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
@@ -111,14 +111,14 @@ public function logout() {
 	public function delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Ungültiger Benutzer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
+			$this->Session->setFlash(__('Benutzer gelöscht'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('User was not deleted'));
+		$this->Session->setFlash(__('Benutzer wurde gelöscht'));
 		$this->redirect(array('action' => 'index'));
 	}
 }
