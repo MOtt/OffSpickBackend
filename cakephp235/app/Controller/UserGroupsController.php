@@ -87,6 +87,12 @@ class UserGroupsController extends AppController {
 		if (!$this->UserGroup->exists()) {
 			throw new NotFoundException(__('Ungültige Benutzergruppe'));
 		}
+		$this->UserGroup->read(null, $id);
+	if (count($this->UserGroup->data['User']) > 0){
+		$this->Session->setFlash(__('Gruppe nicht gelöscht. Es sind noch User in dieser Gruppe!'));
+			$this->redirect(array('action' => 'index'));	
+	}
+		
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->UserGroup->delete()) {
 			$this->Session->setFlash(__('Benutzergruppe wurde gelöscht'));
