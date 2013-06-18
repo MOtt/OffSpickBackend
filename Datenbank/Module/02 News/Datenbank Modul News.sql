@@ -4,13 +4,6 @@
  
  Beschreibung:		Erstellt die initiale Datenbank für das News-Modul
 
- Anleitung:			1. ist für Typ3 (individuelle Masken mit Medikamenten
-					   sind nicht berücksichtigt und müssen bei Bedarf
-					   ergänzt werden
-					2. Backup erstellen!
-					3. Leistungsblätter müssen von Hand kontrolliert werden
-					4. Index anschliessend prüfen/korrigieren (alle VM31..)
-
  Erstellung:		Juni 2013 / Michael Ott
 
  letzte Änderung:	16.06.2013
