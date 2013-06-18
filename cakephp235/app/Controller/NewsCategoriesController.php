@@ -72,6 +72,11 @@ class NewsCategoriesController extends AppController {
 			$this->request->data = $this->NewsCategory->find('first', $options);
 		}
 	}
+	
+	
+	
+		
+
 
 /**
  * delete method
@@ -85,12 +90,21 @@ class NewsCategoriesController extends AppController {
 		if (!$this->NewsCategory->exists()) {
 			throw new NotFoundException(__('Ungültige Kategorie'));
 		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->NewsCategory->delete()) {
-			$this->Session->setFlash(__('Kategorie gelöscht'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Kategorie wurde nicht gelöscht'));
-		$this->redirect(array('action' => 'index'));
+	
+	$this->NewsCategory->read(null, $id);
+
+	if (count($this->NewsCategory->data['NewsMessage']) > 0){
+		$this->Session->setFlash(__('Kategorie nicht gelöscht. Es sind noch News-Einträge in dieser Kategorie!'));
+			$this->redirect(array('action' => 'index'));	
 	}
+	
+	
+	$this->request->onlyAllow('post', 'delete');
+				if ($this->NewsCategory->delete()) {
+				$this->Session->setFlash(__('Kategorie gelöscht'));
+				$this->redirect(array('action' => 'index'));
+				}
+			$this->Session->setFlash(__('Kategorie wurde nicht gelöscht'));
+			$this->redirect(array('action' => 'index'));
+			}			
 }
